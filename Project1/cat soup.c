@@ -10,7 +10,7 @@
 int main(void) {
 	srand(time(NULL));
 	int cat_position = 1, cat_previous_position = cat_position;
-	int lev = 2; int soup = 0; int cp = 0; int cat_feel = 3; int fun = 0; // 0없음 1스크래처 2캣타워 3모두
+	int lev = 2; int soup = 0; int cp = 0; int cat_feel = 3; int fun[4] = { 0 }; // 0없음 1쥐 2레이저 3스크래처 4타워
 
 
 	//이름짓기
@@ -81,7 +81,7 @@ int main(void) {
 		printf("%d이(가) 나왔습니다!\n", feeldice);
 		if (feeldice <= 4) {
 			cat_feel--;
-			printf("%s의 기분이 나빠집니다: %d->%d", catname, cat_feel + 1, cat_feel);
+			printf("%s의 기분이 나빠집니다: %d->%d\n", catname, cat_feel + 1, cat_feel);
 		}
 
 		
@@ -102,17 +102,17 @@ int main(void) {
 			}
 		}
 		else if (cat_feel == 1){
-			if (fun == 0) {
-				printf("놀거리가없어서기분이매우나빠집니다.");
+			if (fun[3] == 0 || fun[4] == 0) {
+				printf("놀거리가없어서기분이매우나빠집니다.\n");
 				cat_feel--;
 			}
 			else {
-				printf("%s은(는)심심해서스크래처쪽으로이동합니다.", catname); //임시
+				printf("%s은(는)심심해서스크래처쪽으로이동합니다.\n", catname); //임시
 				
 			}
 		}
 		else if (cat_feel == 2) {
-			printf("%s은(는) 기분좋게식빵을굽고있습니다.", catname);
+			printf("%s은(는) 기분좋게식빵을굽고있습니다.\n", catname);
 		}
 
 
@@ -176,10 +176,23 @@ int main(void) {
 		printf("\n\n");
 
 		Sleep(500);
+		
 		//상호작용
 		int interaction;
 		printf("\n어떤 상호작용을 하시겠습니까?\n");
-		printf("0. 아무 것도 하지 않음    1. 긁어 주기\n");
+		
+		printf("0. 아무 것도 하지 않음\n");
+		printf("1. 긁어 주기\n");
+		if (fun[1] == 1 && fun[2] == 0) {
+			printf("2. 장난감쥐로놀아주기\n");
+		}
+		if (fun[2] == 1 && fun[1] == 0) {
+			printf("2. 레이저 포인터로 놀아 주기\n");
+		}
+		if (fun[1] == 1 && fun[2] == 1) {
+			printf("2. 장난감쥐로놀아주기\n");
+			printf("3. 레이저 포인터로 놀아 주기\n");
+		}
 
 		do {
 			printf(">>");
