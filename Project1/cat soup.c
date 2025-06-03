@@ -108,7 +108,7 @@ int main(void) {
 			}
 		}
 		else if (cat_feel == 1){
-			if (fun[3] == 0 || fun[4] == 0) {
+			if (scratcher == 0 && tower == 0) {
 				if (cat_feel > 0) {
 					printf("놀 거리가 없어서 기분이 매우 나빠집니다.\n");
 					cat_feel--;
@@ -262,6 +262,9 @@ int main(void) {
 			}
 			else if (interaction == 2) {
 				if ((rat == 1 && laser == 0) || (rat == 1 && laser == 1)) {
+					if (rat == 0) {
+						break;
+					}
 					printf("장난감 쥐로 %s와 놀아주었습니다.\n", catname);
 					if (cat_feel < 3) {
 						printf("%s의 기분이 조금 좋아졌습니다: %d -> %d\n", catname, cat_feel, cat_feel + 1);
@@ -289,6 +292,9 @@ int main(void) {
 					}
 				}
 				else if (rat == 0 && laser == 1) {
+					if (laser == 0) {
+						break;
+					}
 					printf("레이저 포인터로 %s와 신나게 놀아 주었습니다.\n", catname);
 					if (cat_feel == 3) {
 						printf("%s의 기분은 최상입니다: %d\n", catname, cat_feel);
@@ -301,10 +307,10 @@ int main(void) {
 						cat_feel + 2;
 						printf("%s의 기분이 꽤 좋아졌습니다: %d -> %d\n", catname, cat_feel - 2, cat_feel);
 					}
-					printf("친밀도는 주사위 4 이상이면 1 증가\n");
+					printf("친밀도는 주사위 2 이상이면 1 증가\n");
 					int dice = (rand() % 6) + 1;
 					printf("%d(이)가 나왔습니다!\n", dice);
-					if (dice >= 4) {
+					if (dice >= 2) {
 						if (lev < 4) {
 							printf("친밀도가 높아집니다.");
 							lev++;
@@ -318,7 +324,36 @@ int main(void) {
 					}
 				}
 				else if (interaction == 3) {
-
+					if (laser == 0) {
+						break;
+					}
+					printf("레이저 포인터로 %s와 신나게 놀아 주었습니다.\n", catname);
+					if (cat_feel == 3) {
+						printf("%s의 기분은 최상입니다: %d\n", catname, cat_feel);
+					}
+					else if (cat_feel == 2) {
+						cat_feel++;
+						printf("%s의 기분이 꽤 좋아졌습니다: %d -> %d\n", catname, cat_feel - 1, cat_feel);
+					}
+					else {
+						cat_feel + 2;
+						printf("%s의 기분이 꽤 좋아졌습니다: %d -> %d\n", catname, cat_feel - 2, cat_feel);
+					}
+					printf("친밀도는 주사위 2 이상이면 1 증가\n");
+					int dice = (rand() % 6) + 1;
+					printf("%d(이)가 나왔습니다!\n", dice);
+					if (dice >= 2) {
+						if (lev < 4) {
+							printf("친밀도가 높아집니다.");
+							lev++;
+						}
+						else {
+							printf("친밀도가 최상입니다.");
+						}
+					}
+					else {
+						printf("친밀도는 그대로입니다.");
+					}
 				}
 			}
 		}
