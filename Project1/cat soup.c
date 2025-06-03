@@ -10,7 +10,8 @@
 int main(void) {
 	srand(time(NULL));
 	int cat_position = 1, cat_previous_position = cat_position;
-	int lev = 2; int soup = 0; int cp = 0; int cat_feel = 3;
+	int lev = 2; int soup = 0; int cp = 0; int cat_feel = 3; int fun = 0; // 0없음 1스크래처 2캣타워 3모두
+
 
 	//이름짓기
 	char catname[100];
@@ -86,20 +87,35 @@ int main(void) {
 		
 		
 		cat_previous_position = cat_position;
-		if (roomdice >= (6 - lev)) {
+		if (cat_feel == 3) {
 			//냄비 쪽으로 이동
 			printf("냄비 쪽으로 이동합니다.\n\n");
 			if (cat_position < BWL_PO) {
 				 cat_position++;
 			}
 		}
-		else {
+		else if (cat_feel == 0) {
 			//집으로 이동
 			printf("집 쪽으로 이동합니다.\n\n");
 			if (cat_position > HME_POS) {
-				 cat_position--;
+				cat_position--;
 			}
 		}
+		else if (cat_feel == 1){
+			if (fun == 0) {
+				printf("놀거리가없어서기분이매우나빠집니다.");
+				cat_feel--;
+			}
+			else {
+				printf("%s은(는)심심해서스크래처쪽으로이동합니다.", catname); //임시
+				
+			}
+		}
+		else if (cat_feel == 2) {
+			printf("%s은(는) 기분좋게식빵을굽고있습니다.", catname);
+		}
+
+
 		//수프 만들기
 		if (cat_position == BWL_PO) {
 			soup++;
