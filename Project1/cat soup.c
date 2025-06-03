@@ -80,7 +80,7 @@ int main(void) {
 		printf("%d이(가) 나왔습니다!\n", feeldice);
 		if (feeldice <= 4) {
 			cat_feel--;
-			printf("%s의 기분이 나빠집니다.");
+			printf("%s의 기분이 나빠집니다: %d->%d", catname, cat_feel + 1, cat_feel);
 		}
 
 		
