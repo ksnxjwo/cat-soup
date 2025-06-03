@@ -10,7 +10,7 @@
 int main(void) {
 	srand(time(NULL));
 	int cat_position = 1, cat_previous_position = cat_position;
-	int lev = 2; int soup = 0; int cp = 0; int cat_feel = 0;
+	int lev = 2; int soup = 0; int cp = 0; int cat_feel = 3;
 
 	//이름짓기
 	char catname[100];
@@ -73,13 +73,18 @@ int main(void) {
 
 		
 	
-		//룸 
-		int roomdice = (rand() % 6) + 1;
-		printf("%s이동: 집사와 친밀할 수록 냄비 쪽으로 갈 확률이 높아집니다.\n", catname);
-		printf("주사위 눈이 3 이상이면 냄비 쪽으로 이동합니다.\n");
+		//기분 주사위
+		int feeldice = (rand() % 6) + 1;
+		printf("6-2: 주사위눈이4이하이면그냥기분이나빠집니다.\n");
 		printf("주사위를 굴립니다. 또르륵...\n");
-		printf("%d이(가) 나왔습니다!\n", roomdice);
+		printf("%d이(가) 나왔습니다!\n", feeldice);
+		if (feeldice <= 4) {
+			cat_feel--;
+			printf("%s의 기분이 나빠집니다.");
+		}
 
+		
+		
 		cat_previous_position = cat_position;
 		if (roomdice >= (6 - lev)) {
 			//냄비 쪽으로 이동
