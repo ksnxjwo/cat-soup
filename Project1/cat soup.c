@@ -362,49 +362,6 @@ int main(void) {
 		Sleep(2500);
 		system("cls");
 
-		if (cat_position == HME_POS) {
-			printf("%s은(는)자신의집에서편안함을느낍니다.\n", catname);
-			//첫 줄
-			printf("\n");
-			for (int i = 0; i < ROOM_WIDTH; i++) {
-				printf("#");
-			}
-			printf("\n");
-			//두 줄, 집 냄비 줄
-			printf("#");
-			for (int i = 1; i <= (ROOM_WIDTH - 2); i++) {
-				if (i == HME_POS) {
-					printf("H");
-				}
-				else if (i == BWL_PO) {
-					printf("B");
-				}
-				else {
-					printf(" ");
-				}
-			}
-			printf("#\n");
-			//세 줄, 고양이 줄
-			printf("#");
-			for (int i = 1; i <= (ROOM_WIDTH - 2); i++) {
-				if (i == cat_position) {
-					printf("C");
-				}
-				else if (i == cat_previous_position) {
-					printf(".");
-				}
-				else {
-					printf(" ");
-				}
-			}
-			printf("#\n");
-			for (int i = 0; i < ROOM_WIDTH; i++) {
-				printf("#");
-			}
-			printf("\n\n");
-			Sleep(2500);
-			system("cls");
-		}
 	}
 	return 0;
 }
