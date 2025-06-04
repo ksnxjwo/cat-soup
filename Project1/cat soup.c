@@ -357,8 +357,16 @@ int main(void) {
 				}
 			}
 		}
-		printf("현재 친밀도: %d", lev);
-
+		int cp_increase;
+		if ((cat_feel - 1) < 0) {
+			cp_increase = 0;
+		}
+		else {
+			cp_increase = (cat_feel - 1) + lev;
+		}
+		printf("%s의 기분(0~3): %d\n", catname, cat_feel);
+		printf("집사와의 친밀도(0~4): %d", lev);
+		printf("%s의 기분과 친밀도에 따라서 CP가 %d포인트 생산되었습니다.\n", catname, cp_increase);
 		Sleep(2500);
 		system("cls");
 
