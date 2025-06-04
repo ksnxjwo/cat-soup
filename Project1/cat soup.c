@@ -290,6 +290,7 @@ int main(void) {
 					else {
 						printf("친밀도는 그대로입니다.");
 					}
+					break;
 				}
 				else if (rat == 0 && laser == 1) {
 					if (laser == 0) {
@@ -322,6 +323,7 @@ int main(void) {
 					else {
 						printf("친밀도는 그대로입니다.");
 					}
+					break;
 				}
 				else if (interaction == 3) {
 					if (laser == 0) {
@@ -354,6 +356,7 @@ int main(void) {
 					else {
 						printf("친밀도는 그대로입니다.");
 					}
+					break;
 				}
 			}
 		}
@@ -364,9 +367,96 @@ int main(void) {
 		else {
 			cp_increase = (cat_feel - 1) + lev;
 		}
+		cp += cp_increase;
 		printf("%s의 기분(0~3): %d\n", catname, cat_feel);
 		printf("집사와의 친밀도(0~4): %d", lev);
 		printf("%s의 기분과 친밀도에 따라서 CP가 %d포인트 생산되었습니다.\n", catname, cp_increase);
+		printf("보유 CP: %d 포인트\n\n", cp);
+		
+		printf("상점에서 물건을 살 수 있습니다.\n");
+		printf("어떤 물건을 구매할까요?\n");
+		printf(" 0. 아무 것도 사지 않는다.\n");
+		printf(" 1. 장난감 쥐: 1 CP"); if (rat == 1) { printf(" (품절)"); } printf("\n");
+		printf(" 2. 레이저 포인터: 2 CP"); if (laser == 1) { printf(" (품절)"); } printf("\n");
+		printf(" 3. 스크래처: 4 CP"); if (scratcher == 1) { printf(" (품절)"); } printf("\n");
+		printf(" 4. 캣타워: 6 CP"); if (tower == 1) { printf(" (품절)"); } printf("\n");
+		while (1) {
+			int buy;
+			printf(">>");
+			scanf_s("%d", &buy);
+			getchar();
+
+			if (buy == 0) {
+				break;
+			}
+			else if (buy == 1) {
+				if (rat == 1) {
+					printf("장난감 쥐를 이미 구매했습니다.\n");
+					continue;
+				}
+				else if (cp >= 1) {
+					printf("장난감 쥐를 구매했습니다.\n");
+					rat = 1;
+					cp -= 1;
+					printf("보유 CP %d 포인트\n", cp);
+				}
+				else {
+					printf("CP가 부족합니다.\n");
+				}
+				break;
+			}
+			else if (buy == 2) {
+				if (laser == 1) {
+					printf("레이저 포인터를 이미 구매했습니다.\n");
+					continue;
+				}
+				else if (cp >= 2) {
+					printf("레이저 포인터를 구매했습니다.\n");
+					laser = 1;
+					cp -= 2;
+					printf("보유 CP %d 포인트\n", cp);
+				}
+				else {
+					printf("CP가 부족합니다.\n");
+				}
+				break;
+			}
+			else if (buy == 3) {
+				if (scratcher == 1) {
+					printf("스크래쳐를 이미 구매했습니다.\n");
+					continue;
+				}
+				else if (cp >= 4) {
+					printf("스크래처를 구매했습니다.\n");
+					scratcher = 1;
+					cp -= 4;
+					printf("보유 CP %d 포인트\n", cp);
+				}
+				else {
+					printf("CP가 부족합니다.\n");
+				}
+				break;
+			}
+			else if (buy == 4) {
+				if (tower == 1) {
+					printf("캣타워를 이미 구매했습니다.\n");
+					continue;
+				}
+				else if (cp >= 6) {
+					printf("캣타워를 구매했습니다.\n");
+					tower = 1;
+					cp -= 6;
+				}
+				else {
+					printf("CP가 부족합니다.\n");
+				}
+				break;
+			}
+			else {
+				continue;
+			}
+		}
+		
 		Sleep(2500);
 		system("cls");
 
