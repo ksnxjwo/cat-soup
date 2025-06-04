@@ -12,6 +12,7 @@ int main(void) {
 	int cat_position = 1, cat_previous_position = cat_position;
 	int lev = 2; int soup = 0; int cp = 0; int cat_feel = 3; 
 	int rat = 0; int laser = 0; int scratcher = 0; int tower = 0;
+	int S_POS; int T_POS;
 
 
 	//이름짓기
@@ -431,6 +432,13 @@ int main(void) {
 					scratcher = 1;
 					cp -= 4;
 					printf("보유 CP %d 포인트\n", cp);
+					
+					while (1) {
+						S_POS = (rand() % ROOM_WIDTH) + 1;
+						if (S_POS != HME_POS && S_POS != BWL_PO && S_POS != T_POS) {
+							break;
+						}
+					}
 				}
 				else {
 					printf("CP가 부족합니다.\n");
@@ -446,6 +454,13 @@ int main(void) {
 					printf("캣타워를 구매했습니다.\n");
 					tower = 1;
 					cp -= 6;
+					printf("보유 CP %d 포인트\n", cp);
+					while (1) {
+						T_POS = (rand() % ROOM_WIDTH) + 1;
+						if (T_POS != HME_POS && T_POS != BWL_PO && T_POS != S_POS) {
+							break;
+						}
+					}
 				}
 				else {
 					printf("CP가 부족합니다.\n");
