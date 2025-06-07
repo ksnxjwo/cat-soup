@@ -190,8 +190,13 @@ int main(void) {
 		if (cat_position == HME_POS) {
 			home_point++;
 			if (home_point >= 2) {
-				cat_feel++;
-				printf("집에서 %d턴 쉼 기분+1\n", home_point);
+				if (cat_feel < 3) {
+					cat_feel++;
+					printf("집에서 %d턴 쉼 기분+1\n", home_point);
+				}
+				else {
+					printf("집에서 %d턴 쉼 기분이 최상입니다.\n", home_point);
+				}
 			}
 		}
 		else {
@@ -217,12 +222,26 @@ int main(void) {
 		}
 
 		if (cat_position == S_POS) {
-			cat_feel++;
-			printf("%s은(는) 스크래처를 긁고 놀았습니다. 기분이 조금 좋아졌습니다: %d -> %d\n", catname, cat_feel - 1, cat_feel);
+			if (cat_feel < 3) {
+				printf("%s은(는) 스크래처를 긁고 놀았습니다. 기분이 조금 좋아졌습니다: %d -> %d\n", catname, cat_feel, cat_feel + 1);
+				cat_feel++;
+			}
+			else {
+				printf("%s은(는) 스크래처를 긁고 놀았습니다. 기분이 최상입니다.\n", catname);
+			}
 		}
 		if (cat_position == T_POS) {
-			cat_feel++;
-			printf("%s은(는) 캣타워를 뛰어다닙니다. 기분이 제법 좋아졌습니다: %d -> %d\n", catname, cat_feel - 1, cat_feel);
+			if (cat_feel < 2) {
+				printf("%s은(는) 캣타워를 뛰어다니며 놀았습니다. 기분이 제법 좋아졌습니다: %d -> %d\n", catname, cat_feel, cat_feel + 2);
+				cat_feel += 2;
+			}
+			else if (cat_feel == 3) {
+				printf("%s은(는) 캣타워를 뛰어다닙니다. 기분이 최상입니다.\n", catname);
+			}
+			else if (cat_feel == 2) {
+				printf("%s은(는) 캣타워를 뛰어다니며 놀았습니다. 기분이 제법 좋아졌습니다: %d -> %d\n", catname, cat_feel, cat_feel + 1);
+				cat_feel++;
+			}
 		}
 
 
