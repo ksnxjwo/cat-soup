@@ -12,7 +12,7 @@ int main(void) {
 	int cat_position = 1, cat_previous_position = cat_position;
 	int lev = 2; int soup = 0; int cp = 0; int cat_feel = 3; 
 	int rat = 0; int laser = 0; int scratcher = 0; int tower = 0;
-	int S_POS; int T_POS;
+	int S_POS = 0; int T_POS = 0;
 
 
 	//이름짓기
@@ -161,6 +161,12 @@ int main(void) {
 			}
 			else if (i == BWL_PO) {
 				printf("B");
+			}
+			else if (i == S_POS) {
+				printf("S");
+			}
+			else if (i == T_POS) {
+				printf("T");
 			}
 			else {
 				printf(" ");
