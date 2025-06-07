@@ -119,8 +119,26 @@ int main(void) {
 				}
 			}
 			else {
-				printf("%s은(는) 심심해서 스크래처 쪽으로 이동합니다.\n", catname); //임시
-				
+				int distance_S = abs(cat_position - S_POS);
+				int distance_T = abs(cat_position - T_POS);
+				if (distance_S < distance_T) {
+					printf("%s는 심심해서 스크래처 쪽으로 이동합니다.\n\n", catname);
+					if (cat_position < S_POS) {
+						cat_position++;
+					}
+					else if (cat_position > S_POS) {
+						cat_position--;
+					}
+				}
+				else if (distance_T < distance_S) {
+					printf("%s는 심심해서 캣타워 쪽으로 이동합니다.\n\n", catname);
+					if (cat_position < T_POS) {
+						cat_position++;
+					}
+					else if (cat_position > T_POS) {
+						cat_position--;
+					}
+				}
 			}
 		}
 		else if (cat_feel == 2) {
