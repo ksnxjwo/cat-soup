@@ -206,7 +206,7 @@ int main(void) {
 		//수프 만들기
 		if (cat_position == BWL_PO) {
 			soup++;
-			int soup_kind = rand() % 2;
+			int soup_kind = rand() % 3;
 			switch (soup_kind) {
 			case 0:
 				printf("%s(이)가 감자 수프를 만들었습니다!", catname);
