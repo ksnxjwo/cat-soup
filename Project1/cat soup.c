@@ -174,6 +174,15 @@ int main(void) {
 			printf("\n현재까지 만든 수프: %d개\n", soup);
 		}
 
+		if (cat_position == S_POS) {
+			cat_feel++;
+			printf("%s은(는) 스크래처를 긁고 놀았습니다. 기분이 조금 좋아졌습니다: %d -> %d\n", catname, cat_feel - 1, cat_feel);
+		}
+		if (cat_position == T_POS) {
+			cat_feel++;
+			printf("%s은(는) 캣타워를 뛰어다닙니다. 기분이 제법 좋아졌습니다: %d -> %d\n", catname, cat_feel - 1, cat_feel);
+		}
+
 
 		//첫 줄
 		printf("\n");
