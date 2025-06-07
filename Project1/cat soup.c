@@ -13,7 +13,7 @@ int main(void) {
 	int lev = 2; int soup = 0; int cp = 0; int cat_feel = 3; 
 	int rat = 0; int laser = 0; int scratcher = 0; int tower = 0;
 	int S_POS = 0; int T_POS = 0;
-
+	int home_point = 0;
 
 	//이름짓기
 	char catname[100];
@@ -144,7 +144,17 @@ int main(void) {
 		else if (cat_feel == 2) {
 			printf("%s은(는) 기분좋게식빵을굽고있습니다.\n", catname);
 		}
-
+		
+		if (cat_position == HME_POS) {
+			home_point++;
+			if (home_point >= 2) {
+				cat_feel++;
+				printf("집에서 %d턴 쉼 기분+1\n", home_point);
+			}
+		}
+		else {
+			home_point = 0;
+		}
 
 		//수프 만들기
 		if (cat_position == BWL_PO) {
