@@ -517,7 +517,7 @@ int main(void) {
 					printf("보유 CP %d 포인트\n", cp);
 					
 					while (1) {
-						S_POS = (rand() % ROOM_WIDTH) + 1;
+						S_POS = (rand() % (ROOM_WIDTH - 2)) + 1;
 						if (S_POS != HME_POS && S_POS != BWL_PO && S_POS != T_POS) {
 							break;
 						}
@@ -539,7 +539,7 @@ int main(void) {
 					cp -= 6;
 					printf("보유 CP %d 포인트\n", cp);
 					while (1) {
-						T_POS = (rand() % ROOM_WIDTH) + 1;
+						T_POS = (rand() % (ROOM_WIDTH - 2)) + 1;
 						if (T_POS != HME_POS && T_POS != BWL_PO && T_POS != S_POS) {
 							break;
 						}
