@@ -46,6 +46,7 @@ int main(void) {
 			printf("당신이 해야 할 일은?\n\n");
 			printf("1. 고양이에게 혼낸다.\n");
 			printf("2. 고양이에게 간식을 준다.\n");
+			printf("3. 컵을 치운다\n");
 
 			while (1) {
 				int choice;
@@ -66,6 +67,12 @@ int main(void) {
 					if (cat_feel > 3) {
 						cat_feel = 3;
 					}
+					break;
+				}
+				else if (choice == 3) {
+					printf("컵을 치웠습니다.\n");
+					printf("당연히 컵을 먼저 치워야죠.\n");
+					printf("고양이는 아무것도 몰라요.\n");
 					break;
 				}
 			}
