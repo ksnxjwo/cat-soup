@@ -127,10 +127,10 @@ int main(void) {
 	
 		//기분 주사위
 		int feeldice = (rand() % 6) + 1;
-		printf("6-2: 주사위눈이 4이하이면 그냥 기분이 나빠집니다.\n");
+		printf("6-친밀도: 그냥 기분이 나빠집니다.\n");
 		printf("주사위를 굴립니다. 또르륵...\n");
 		printf("%d이(가) 나왔습니다!\n", feeldice);
-		if (feeldice <= 4) {
+		if (feeldice <= 6 - lev) {
 			if (cat_feel > 0) {
 				printf("아무 이유 없이 기분이 나빠집니다. 고양이니까?\n");
 				cat_feel--;
@@ -483,6 +483,8 @@ int main(void) {
 		printf("%s의 기분과 친밀도에 따라서 CP가 %d포인트 생산되었습니다.\n", catname, cp_increase);
 		printf("보유 CP: %d 포인트\n\n", cp);
 		
+
+
 		printf("상점에서 물건을 살 수 있습니다.\n");
 		printf("어떤 물건을 구매할까요?\n");
 		printf(" 0. 아무 것도 사지 않는다.\n");
