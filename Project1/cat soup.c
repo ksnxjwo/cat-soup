@@ -12,7 +12,7 @@ int main(void) {
 	int cat_position = 1, cat_previous_position = cat_position;
 	int lev = 2; int soup = 0; int cp = 0; int cat_feel = 3; 
 	int rat = 0; int laser = 0; int scratcher = 0; int tower = 0;
-	int S_POS = 0; int T_POS = 0;
+	int SCRATCHER_POS = 0; int TOWER_POS = 0;
 	int home_point = 0;
 	int repetition = 1;
 	
@@ -168,23 +168,23 @@ int main(void) {
 				}
 			}
 			else {
-				int distance_S = abs(cat_position - S_POS);
-				int distance_T = abs(cat_position - T_POS);
+				int distance_S = abs(cat_position - SCRATCHER_POS);
+				int distance_T = abs(cat_position - TOWER_POS);
 				if (distance_S < distance_T) {
 					printf("%s는 심심해서 스크래처 쪽으로 이동합니다.\n\n", catname);
-					if (cat_position < S_POS) {
+					if (cat_position < SCRATCHER_POS) {
 						cat_position++;
 					}
-					else if (cat_position > S_POS) {
+					else if (cat_position > SCRATCHER_POS) {
 						cat_position--;
 					}
 				}
 				else if (distance_T < distance_S) {
 					printf("%s는 심심해서 캣타워 쪽으로 이동합니다.\n\n", catname);
-					if (cat_position < T_POS) {
+					if (cat_position < TOWER_POS) {
 						cat_position++;
 					}
-					else if (cat_position > T_POS) {
+					else if (cat_position > TOWER_POS) {
 						cat_position--;
 					}
 				}
@@ -228,7 +228,7 @@ int main(void) {
 			printf("\n현재까지 만든 수프: %d개\n", soup);
 		}
 
-		if (cat_position == S_POS) {
+		if (cat_position == SCRATCHER_POS) {
 			if (cat_feel < 3) {
 				printf("%s은(는) 스크래처를 긁고 놀았습니다. 기분이 조금 좋아졌습니다: %d -> %d\n", catname, cat_feel, cat_feel + 1);
 				cat_feel++;
@@ -237,7 +237,7 @@ int main(void) {
 				printf("%s은(는) 스크래처를 긁고 놀았습니다. 기분이 최상입니다.\n", catname);
 			}
 		}
-		if (cat_position == T_POS) {
+		if (cat_position == TOWER_POS) {
 			if (cat_feel < 2) {
 				printf("%s은(는) 캣타워를 뛰어다니며 놀았습니다. 기분이 제법 좋아졌습니다: %d -> %d\n", catname, cat_feel, cat_feel + 2);
 				cat_feel += 2;
@@ -267,10 +267,10 @@ int main(void) {
 			else if (i == BWL_PO) {
 				printf("B");
 			}
-			else if (i == S_POS) {
+			else if (i == SCRATCHER_POS) {
 				printf("S");
 			}
-			else if (i == T_POS) {
+			else if (i == TOWER_POS) {
 				printf("T");
 			}
 			else {
@@ -402,9 +402,6 @@ int main(void) {
 					break;
 				}
 				else if (rat == 0 && laser == 1) {
-					//if (laser == 0) {
-					//	break;
-					//}
 					printf("레이저 포인터로 %s와 신나게 놀아 주었습니다.\n", catname);
 					if (cat_feel == 3) {
 						printf("%s의 기분은 최상입니다: %d\n", catname, cat_feel);
@@ -545,8 +542,8 @@ int main(void) {
 					printf("보유 CP %d 포인트\n", cp);
 					
 					while (1) {
-						S_POS = (rand() % (ROOM_WIDTH - 2)) + 1;
-						if (S_POS != HME_POS && S_POS != BWL_PO && S_POS != T_POS) {
+						SCRATCHER_POS = (rand() % (ROOM_WIDTH - 2)) + 1;
+						if (SCRATCHER_POS != HME_POS && SCRATCHER_POS != BWL_PO && SCRATCHER_POS != TOWER_POS) {
 							break;
 						}
 					}
@@ -567,8 +564,8 @@ int main(void) {
 					cp -= 6;
 					printf("보유 CP %d 포인트\n", cp);
 					while (1) {
-						T_POS = (rand() % (ROOM_WIDTH - 2)) + 1;
-						if (T_POS != HME_POS && T_POS != BWL_PO && T_POS != S_POS) {
+						TOWER_POS = (rand() % (ROOM_WIDTH - 2)) + 1;
+						if (TOWER_POS != HME_POS && TOWER_POS != BWL_PO && TOWER_POS != SCRATCHER_POS) {
 							break;
 						}
 					}
